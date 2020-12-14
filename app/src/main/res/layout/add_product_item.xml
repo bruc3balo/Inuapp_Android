@@ -1,0 +1,141 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="3dp"
+    android:layout_margin="1dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_margin="1dp"
+        android:padding="2dp"
+        android:layout_gravity="top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:src="@mipmap/nfp_png"
+            android:id="@+id/commodityImage_admin"
+            android:background="#00FFFFFF"
+            android:scaleType="fitXY"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:padding="4dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <View
+            android:layout_marginStart="10dp"
+            android:background="@color/semiBlack"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"/>
+
+        <LinearLayout
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/commodityName_admin"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Name"/>
+
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/commodityPrice_admin"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Price"/>
+
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/commodityDescription_admin"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Description"/>
+
+                <TextView
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/commoityNumber_admin"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="Number of items"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="1dp"
+        android:padding="2dp"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/edit_admin"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            android:background="#ffffff"
+            android:src="@drawable/brush"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/sale_admin"
+            android:layout_gravity="center"
+            android:layout_margin="4dp"
+            android:padding="4dp"
+            android:background="#ffffff"
+            android:src="@drawable/money_off"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent" />
+
+        <ImageButton
+            android:id="@+id/delete_admin"
+            android:layout_margin="4dp"
+            android:background="#ffffff"
+            android:src="@android:drawable/ic_menu_delete"
+            android:tint="@android:color/holo_red_dark"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_gravity="center"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".admin.addNewProduct.AddNewProductActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        app:title="Add new Product"
+        app:titleTextColor="@color/white"
+        app:navigationIcon="@drawable/ic_fresh_fruit"
+        android:background="@color/greenPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"/>
+
+   <ScrollView
+       android:padding="5dp"
+       android:layout_gravity="center"
+       android:layout_weight="1"
+       android:layout_width="match_parent"
+       android:layout_height="0dp">
+
+       <LinearLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:orientation="vertical">
+
+
+           <ImageView
+               android:id="@+id/productPreview"
+               android:layout_width="match_parent"
+               android:layout_height="250dp"
+               android:layout_gravity="center"
+               android:src="@drawable/ic_fresh_fruit"/>
+
+           <Button
+               android:id="@+id/getImageButton"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_margin="5dp"
+               android:background="@color/greenPrimary"
+               android:textColor="@color/white"
+               android:layout_gravity="center_vertical"
+               android:text="Get Image"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_vertical"
+               android:text="Name of the product"
+               android:textColor="@color/black"
+               android:layout_margin="5dp"
+               android:padding="5dp"/>
+
+           <EditText
+               android:id="@+id/nameOfProductField"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:gravity="center_vertical"
+               android:hint="Name of product"
+               android:layout_margin="5dp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:gravity="center_vertical"
+               android:text="Category"
+               android:padding="5dp"
+               android:layout_margin="5dp"
+               android:textColor="@color/black"/>
+
+           <RadioGroup
+               android:id="@+id/categoryGroup"
+               android:padding="5dp"
+               android:layout_gravity="center"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <RadioButton
+                   android:id="@+id/electronicRadio"
+                   android:text="@string/electronics"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical"/>
+
+               <RadioButton
+                   android:id="@+id/homeRadio"
+                   android:text="@string/home"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical"/>
+
+               <RadioButton
+                   android:id="@+id/gamingRadio"
+                   android:text="@string/gaming"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical"/>
+
+               <RadioButton
+                   android:id="@+id/fashionRadio"
+                   android:text="@string/fashion"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical"/>
+
+
+               <RadioButton
+                   android:id="@+id/computingRadio"
+                   android:text="@string/computing"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical"/>
+
+
+               <RadioButton
+                   android:id="@+id/sportingRadio"
+                   android:text="@string/sporting"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical"/>
+
+           </RadioGroup>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:gravity="center_vertical"
+               android:text="Product unit"
+               android:padding="5dp"
+               android:layout_margin="5dp"
+               android:textColor="@color/black"/>
+
+           <RadioGroup
+               android:id="@+id/unitGroup"
+               android:padding="5dp"
+               android:layout_gravity="center"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content">
+
+               <RadioButton
+                   android:id="@+id/weightUnit"
+                   android:text="Weight"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical"/>
+
+               <RadioButton
+                   android:id="@+id/litresUnit"
+                   android:text="Litres"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical"/>
+
+               <RadioButton
+                   android:id="@+id/countUnit"
+                   android:text="Count"
+                   android:layout_gravity="center_vertical"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   android:gravity="center_vertical"/>
+
+           </RadioGroup>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:gravity="center_vertical"
+               android:text="Price per unit"
+               android:layout_margin="5dp"
+               android:textColor="@color/black"/>
+
+           <EditText
+               android:id="@+id/priceField"
+               android:inputType="numberDecimal"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:gravity="center_vertical"
+               android:hint="Price"
+               android:layout_margin="5dp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:gravity="center_vertical"
+               android:text="Description"
+               android:layout_margin="5dp"
+               android:textColor="@color/black"/>
+
+           <EditText
+               android:id="@+id/descriptionField"
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:gravity="center_vertical"
+               android:hint="Description"
+               android:layout_margin="5dp"/>
+
+       </LinearLayout>
+
+   </ScrollView>
+
+    <Button
+        android:id="@+id/postButton"
+        android:text="Post"
+        android:textColor="@color/white"
+        android:background="@color/greenPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"/>
+
+
+</LinearLayout>

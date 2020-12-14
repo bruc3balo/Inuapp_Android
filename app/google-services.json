@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "308389418605",
+    "project_id": "inuapp-1191a",
+    "storage_bucket": "inuapp-1191a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:308389418605:android:1d7cf6af6aab0b0a5dd164",
+        "android_client_info": {
+          "package_name": "com.example.inuapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "308389418605-jrn0c4l50v9q2qvhnse0kjdn6ce0um8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBjGYrCXuPc4ReM5h4txObNdwHIzPaYUcw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "308389418605-jrn0c4l50v9q2qvhnse0kjdn6ce0um8e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

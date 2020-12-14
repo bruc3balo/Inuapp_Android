@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_navigation"
+    app:startDestination="@+id/nav_add_new_products">
+
+    <fragment
+        android:id="@+id/nav_add_new_products"
+        android:name="com.example.inuapp.admin.addNewProduct.NewProductFragment"
+        android:label="@string/new_product"
+        tools:layout="@layout/fragment_new_product"/>
+
+    <fragment
+        android:id="@+id/nav_add_products"
+        android:name="com.example.inuapp.admin.addProducts.AddProductsFragment"
+        android:label="@string/add_products"
+        tools:layout="@layout/fragment_add_products"/>
+
+
+
+    <fragment
+        android:id="@+id/nav_orders"
+        android:name="com.example.inuapp.admin.orders.AdminOrdersFragment"
+        android:label="@string/orders"
+        tools:layout="@layout/fragment_admin_orders"/>
+
+    <fragment
+        android:id="@+id/nav_logs"
+        android:name="com.example.inuapp.admin.logs.LogsFragment"
+        android:label="@string/logs"
+        tools:layout="@layout/fragment_logs"/>
+
+
+
+</navigation>

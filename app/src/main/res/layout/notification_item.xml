@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="3dp"
+    app:cardCornerRadius="15dp"
+    app:contentPadding="5dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:padding="5dp"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center">
+        <TextView
+            android:id="@+id/notification_title"
+            android:drawablePadding="4dp"
+            android:drawableStart="@drawable/ic_bell"
+            android:layout_gravity="top"
+            android:textSize="18sp"
+            android:textAppearance="@style/TextAppearance.Compat.Notification.Title"
+            android:textAllCaps="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" title " />
+
+        <View
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="center"
+            android:background="@color/semiBlack"/>
+
+        <TextView
+            android:id="@+id/notification_content"
+            android:layout_gravity="top"
+            android:textSize="18sp"
+            android:textAppearance="@style/TextAppearance.Compat.Notification.Info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/title" />
+
+        <TextView
+            android:id="@+id/notification_time"
+            android:gravity="end"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+
+            android:text="time"/>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

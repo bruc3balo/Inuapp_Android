@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="12dp"
+    android:background="#2DF4F4F4"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="4dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_gravity="top"
+        android:layout_margin="1dp"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+        <ImageView
+            android:id="@+id/commodityImage_wish"
+            android:layout_width="150dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:background="#00FFFFFF"
+            android:padding="4dp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/nfp_png" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:background="#0CCAC0C0" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="2dp"
+            android:orientation="vertical"
+            android:padding="4dp">
+
+            <TextView
+                android:id="@+id/commodityName_wish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:padding="4dp"
+                android:text="comodity Name"
+                android:textAllCaps="true"
+                android:textSize="17sp" />
+
+            <TextView
+                android:id="@+id/commodityPrice_wish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Price" />
+
+
+            <TextView
+                android:id="@+id/commodityNumber_wish"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Number of items" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_gravity="bottom"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/remove_wish"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:src="@android:drawable/ic_menu_delete"
+            android:tint="#B54848" />
+
+        <ImageButton
+            android:id="@+id/addCart_wish"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:src="@drawable/ic_cart_" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="10dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginBottom="12dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/news_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="5dp"
+        android:text="News Title"
+        android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@color/semiBlack" />
+
+    <TextView
+        android:id="@+id/news_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="5dp"
+        android:padding="4dp"
+        android:text="This is a lot of content for a description"
+        android:textAppearance="@style/TextAppearance.Compat.Notification.Info.Media" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="1dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/news_like"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:padding="8dp"
+            android:src="@drawable/thumb_up" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="1"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:id="@+id/news_dislike"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="#00FFFFFF"
+            android:padding="8dp"
+            android:src="@drawable/thumb_down" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="3dp"
+            android:text="1"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/news_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginStart="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="5dp"
+        android:gravity="end"
+        android:padding="2dp"
+        android:text="Time"
+        android:textAppearance="@style/TextAppearance.Compat.Notification.Info.Media"
+        android:textColor="#9E817D7D" />
+
+</LinearLayout>

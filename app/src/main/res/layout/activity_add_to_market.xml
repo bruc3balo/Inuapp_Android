@@ -33,12 +33,14 @@
                 android:textColor="@color/black" />
 
             <RadioGroup
+                android:id="@+id/categoryGroup"
                 android:padding="5dp"
                 android:layout_gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <RadioButton
+                    android:id="@+id/electronicRadio"
                     android:text="@string/electronics"
                     android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
@@ -46,6 +48,7 @@
                     android:gravity="center_vertical"/>
 
                 <RadioButton
+                    android:id="@+id/homeRadio"
                     android:text="@string/home"
                     android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
@@ -53,6 +56,7 @@
                     android:gravity="center_vertical"/>
 
                 <RadioButton
+                    android:id="@+id/gamingRadio"
                     android:text="@string/gaming"
                     android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
@@ -60,6 +64,7 @@
                     android:gravity="center_vertical"/>
 
                 <RadioButton
+                    android:id="@+id/fashionRadio"
                     android:text="@string/fashion"
                     android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
@@ -68,6 +73,7 @@
 
 
                 <RadioButton
+                    android:id="@+id/computingRadio"
                     android:text="@string/computing"
                     android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
@@ -76,6 +82,7 @@
 
 
                 <RadioButton
+                    android:id="@+id/sportingRadio"
                     android:text="@string/sporting"
                     android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
@@ -102,12 +109,14 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:id="@+id/unitEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
+                android:inputType="numberDecimal"
                 android:gravity="center_vertical"
-                android:hint="Name of product" />
+                android:hint="Units" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -119,12 +128,13 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:id="@+id/priceEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:gravity="center_vertical"
-                android:hint="Name of product" />
+                android:hint="Price of product" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -136,18 +146,21 @@
                 android:textColor="@color/black" />
 
             <EditText
+                android:id="@+id/descriptionEdit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="5dp"
                 android:gravity="center_vertical"
-                android:hint="Name of product" />
+                android:hint="Description of product" />
 
         </LinearLayout>
 
     </ScrollView>
 
     <Button
+        android:id="@+id/addToMarketButton"
+        android:text="Post"
         android:layout_gravity="center"
         android:background="@color/greenPrimary"
         android:layout_width="match_parent"

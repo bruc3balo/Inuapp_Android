@@ -21,6 +21,8 @@ public class Products {
     public static final String PRODUCT_SP = "productSellingPricePerUnit";
     private String postedAt;
     public static final String POSTED_AT = "postedAt";
+    private String productCount;
+    public static final String PRODUCT_COUNT = "productCount";
 
     private int productSellCount;
     public static final String PRODUCT_SELL_COUNT = "productSellCount";
@@ -41,25 +43,22 @@ public class Products {
     public static final String PRODUCT_SUR = "PD";
     public static final String NO_IMAGE = "https://techweez.com/wp-content/uploads/2017/07/NO-IMAGE.png";
     public static final String PRODUCTS = "Products";
+    public static final String SHOP = "Shop";
 
-    public Products(String productId, String productCategory, String productName, String productImageUrl, Double productMarketPricePerUnit, String productDescription, String productUnit, Double productSellingPricePerUnit, String postedAt, int productSellCount) {
-        this.productId = productId;
-        this.productCategory = productCategory;
-        this.productName = productName;
-        this.productImageUrl = productImageUrl;
-        this.productMarketPricePerUnit = productMarketPricePerUnit;
-        this.productDescription = productDescription;
-        this.productUnit = productUnit;
-        this.productSellingPricePerUnit = productSellingPricePerUnit;
-        this.postedAt = postedAt;
-        this.productSellCount = productSellCount;
-    }
 
     public Products() {
     }
 
     public Products(String productName) {
         this.productName = productName;
+    }
+
+    public String getProductCount() {
+        return productCount;
+    }
+
+    public void setProductCount(String productCount) {
+        this.productCount = productCount;
     }
 
     public String getProductId() {

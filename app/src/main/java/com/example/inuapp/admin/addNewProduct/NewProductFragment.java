@@ -7,12 +7,15 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inuapp.R;
 import com.example.inuapp.admin.AdminActivity;
 import com.example.inuapp.admin.addNewProduct.adapter.NewProductRvAdapter;
+import com.example.inuapp.models.Products;
+import com.example.inuapp.ui.explore.ExploreViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.LinkedList;
@@ -23,7 +26,7 @@ import static com.example.inuapp.admin.AdminActivity.fab;
 
 public class NewProductFragment extends Fragment {
 
-    private LinkedList<String> new_product_list = new LinkedList<>();
+    private LinkedList<Products> new_product_list = new LinkedList<>();
 
     public NewProductFragment() {
         // Required empty public constructor
@@ -54,14 +57,19 @@ public class NewProductFragment extends Fragment {
         //Rv
         RecyclerView recyclerView = v.findViewById(R.id.new_product_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false));
-
-        new_product_list.add("");
-        new_product_list.add("");
-        new_product_list.add("");
-
         NewProductRvAdapter newProductFragment = new NewProductRvAdapter(requireContext(),new_product_list);
         recyclerView.setAdapter(newProductFragment);
 
+        populateShop(newProductFragment);
+
         return v;
+    }
+
+    private void populateShop(NewProductRvAdapter newProductFragment) {
+        ExploreViewModel exploreViewModel = new ViewModelProvider(this).get(ExploreViewModel.class);
+        exploreViewModel.getProductsData().observe(getViewLifecycleOwner(), products -> {
+            new_product_list.add(products);
+            newProductFragment.notifyDataSetChanged();
+        });
     }
 }

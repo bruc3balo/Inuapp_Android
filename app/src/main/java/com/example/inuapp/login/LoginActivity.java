@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.inuapp.MainActivity;
 import com.example.inuapp.R;
 import com.example.inuapp.admin.AdminActivity;
+import com.google.firebase.FirebaseApp;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -17,6 +18,7 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        FirebaseApp.initializeApp(this);
     }
 
 

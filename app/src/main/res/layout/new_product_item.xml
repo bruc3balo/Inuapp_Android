@@ -80,15 +80,15 @@
                     android:layout_height="0dp"
                     android:text="Description"/>
 
-                <TextView
+                <!--<TextView
                     android:layout_marginStart="5dp"
-                    android:id="@+id/commoityNumber_admin"
+                    android:id="@+id/commodityNumber_admin"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:text="Number of items"/>
+                    android:text="Number of items"/>-->
 
             </LinearLayout>
 

@@ -6,12 +6,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.inuapp.R;
+import com.example.inuapp.models.Products;
 import com.example.inuapp.ui.cart.Cart;
 import com.example.inuapp.ui.wishlist.Wishlist;
 
@@ -19,18 +22,18 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
 
-public class Category1RvAdapter extends RecyclerView.Adapter<Category1RvAdapter.ViewHolder> {
+public class ElectronicsRv extends RecyclerView.Adapter<ElectronicsRv.ViewHolder> {
 
 
-    private LinkedList<String> images;
+    private LinkedList<Products> productsList;
     private final LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private final Context mContext;
 
 
-    public Category1RvAdapter(Context context, LinkedList<String> images) {
+    public ElectronicsRv(Context context, LinkedList<Products> productsList) {
         this.mInflater = LayoutInflater.from(context);
-        this.images = images;
+        this.productsList = productsList;
         this.mContext = context;
     }
 
@@ -44,6 +47,13 @@ public class Category1RvAdapter extends RecyclerView.Adapter<Category1RvAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+
+        holder.name.setText(productsList.get(position).getProductName());
+        holder.postedAtTv.setText(productsList.get(position).getPostedAt());
+        holder.description.setText(productsList.get(position).getProductDescription());
+        holder.price.setText(String.valueOf(productsList.get(position).getProductMarketPricePerUnit()));
+        //Glide.with(mContext).load(productsList.get(position).getProductImageUrl()).into(holder.preview);
+
         holder.addToWishlistButton.setOnClickListener(v -> mContext.startActivity(new Intent(mContext, Wishlist.class)));
         holder.addToCartButton.setOnClickListener(v -> mContext.startActivity(new Intent(mContext, Cart.class)));
     }
@@ -52,17 +62,27 @@ public class Category1RvAdapter extends RecyclerView.Adapter<Category1RvAdapter.
     // total number of rows
     @Override
     public int getItemCount() {
-        return images.size();
+        return productsList.size();
     }
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         Button addToCartButton, addToWishlistButton;
+        ImageView preview;
+        TextView name,price,description,postedAtTv;
 
         ViewHolder(View itemView) {
             super(itemView);
             addToCartButton = itemView.findViewById(R.id.addToCartButton);
             addToWishlistButton = itemView.findViewById(R.id.addToWishlistButton);
+
+            name = itemView.findViewById(R.id.productName);
+            price = itemView.findViewById(R.id.productPrice);
+            description = itemView.findViewById(R.id.productDescription);
+
+            postedAtTv = itemView.findViewById(R.id.postedAtTv);
+            preview = itemView.findViewById(R.id.productImage);
+
             itemView.setOnClickListener(this);
         }
 

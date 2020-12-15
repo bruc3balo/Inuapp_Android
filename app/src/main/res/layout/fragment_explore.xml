@@ -44,7 +44,7 @@
                android:background="@color/semiBlack"/>
 
            <androidx.recyclerview.widget.RecyclerView
-               android:id="@+id/category1Grid"
+               android:id="@+id/electronicsRv"
                android:layout_width="match_parent"
                android:orientation="horizontal"
                android:layout_height="wrap_content"

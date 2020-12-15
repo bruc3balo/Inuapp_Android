@@ -5,16 +5,14 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.StrictMode;
 import android.provider.MediaStore;
-import android.view.Gravity;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -29,8 +27,11 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.inuapp.R;
 import com.example.inuapp.models.Products;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -45,6 +46,7 @@ import static com.example.inuapp.models.Products.GAMING;
 import static com.example.inuapp.models.Products.HOME;
 import static com.example.inuapp.models.Products.LITRES;
 import static com.example.inuapp.models.Products.NO_IMAGE;
+import static com.example.inuapp.models.Products.PRODUCTS;
 import static com.example.inuapp.models.Products.PRODUCT_IMAGES;
 import static com.example.inuapp.models.Products.PRODUCT_SUR;
 import static com.example.inuapp.models.Products.SPORTING;
@@ -56,6 +58,7 @@ public class AddNewProductActivity extends AppCompatActivity {
     private String categoryS = "";
     private String unitS = "";
     private Uri file = null;
+    private Uri dataUri = null;
     public static final int GET_FROM_GALLERYA = 2;
 
     private Button getImageButton;
@@ -75,7 +78,7 @@ public class AddNewProductActivity extends AppCompatActivity {
         getImageButton = findViewById(R.id.getImageButton);
         getImageButton.setEnabled(true);
 
-        getImageButton.setOnClickListener(v ->  galleryPermission());
+        getImageButton.setOnClickListener(v -> galleryPermission());
 
         //Name
         EditText nameOfProductField = findViewById(R.id.nameOfProductField);
@@ -143,7 +146,8 @@ public class AddNewProductActivity extends AppCompatActivity {
         Button postButton = findViewById(R.id.postButton);
         postButton.setOnClickListener(v -> {
             if (validateForm(nameOfProductField, priceField, descriptionField)) {
-                uploadProduct(file);
+                new UploadProduct().execute(product, null, null);
+                finish();
             } else {
                 Toast.makeText(AddNewProductActivity.this, "Check Details", Toast.LENGTH_SHORT).show();
             }
@@ -222,6 +226,8 @@ public class AddNewProductActivity extends AppCompatActivity {
                         //upload image
                         // pickImage.setImageBitmap(bitmap);
                         productPreview.setImageURI(data.getData());
+                        dataUri = data.getData();
+
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -233,24 +239,14 @@ public class AddNewProductActivity extends AppCompatActivity {
         }
     }
 
-    private void uploadProduct(Uri files) {
-        StorageReference productBucket = FirebaseStorage.getInstance().getReference().child(PRODUCT_IMAGES);
-        Uri file = Uri.fromFile(new File(String.valueOf(files)));
-        productBucket.putFile(file).addOnSuccessListener(taskSnapshot -> {// Get a URL to the uploaded content
-            Uri downloadUrl = Uri.parse(taskSnapshot.getTask().getResult().toString());
-            System.out.println("Uploaded " + files.toString());
-        }).addOnFailureListener(exception -> {
-            System.out.println("Failed to upload " + files.toString());
-            saveToDocs(product);
-        });
-    }
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void galleryPermission() {
-        checkSelfPermission(Manifest.permission_group.STORAGE);
+        // checkSelfPermission(Manifest.permission_group.STORAGE);
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
             Toast.makeText(this, "Not granted", Toast.LENGTH_SHORT).show();
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
         } else {
             Toast.makeText(this, "Granted", Toast.LENGTH_SHORT).show();
             StrictMode.VmPolicy.Builder builder = new StrictMode.VmPolicy.Builder();
@@ -268,7 +264,59 @@ public class AddNewProductActivity extends AppCompatActivity {
         }
     }
 
-    private void saveToDocs(Products product) {
+    @SuppressLint("StaticFieldLeak")
+    public class UploadProduct extends AsyncTask<Products, Void, Void> {
 
+        public UploadProduct() {
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected Void doInBackground(Products... products) {
+            uploadProduct(dataUri);
+            return null;
+        }
+
+        private void uploadProduct(Uri files) {
+            StorageReference productBucket = FirebaseStorage.getInstance().getReference().child(PRODUCT_IMAGES).child(product.getProductId());
+            //  Uri file = Uri.fromFile(new File(String.valueOf(files)));
+            //Todo Fix images link
+            productBucket.putFile(files).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    if (taskSnapshot.getTask().isSuccessful()) {
+                        UploadTask.TaskSnapshot downloadUrl = taskSnapshot.getTask().getResult();
+                        Toast.makeText(AddNewProductActivity.this, "" + downloadUrl, Toast.LENGTH_SHORT).show();
+                        product.setProductImageUrl(downloadUrl.toString());
+                        System.out.println("Uploaded " + downloadUrl);
+
+                        saveToDocs(product);
+                    }
+                }
+            }).addOnFailureListener(exception -> {
+                System.out.println("Failed to upload " + files.toString());
+                saveToDocs(product);
+            });
+        }
+
+        private void saveToDocs(Products product) {
+            FirebaseFirestore db = FirebaseFirestore.getInstance();
+            db.collection(PRODUCTS).document(product.getProductId()).set(product).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    System.out.println(product.getProductName() + " has been saved");
+                } else {
+                    System.out.println(product.getProductName() + " has not been saved");
+                }
+            });
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
+        }
     }
 }

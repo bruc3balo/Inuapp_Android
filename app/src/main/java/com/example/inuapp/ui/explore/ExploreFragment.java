@@ -13,28 +13,38 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.inuapp.R;
-import com.example.inuapp.ui.explore.adapters.Category1RvAdapter;
+import com.example.inuapp.models.Products;
+import com.example.inuapp.ui.explore.adapters.ElectronicsRv;
 
 import java.util.LinkedList;
 
 public class ExploreFragment extends Fragment {
 
-    private final LinkedList<String> category1List = new LinkedList<>();
+    private final LinkedList<Products> category1List = new LinkedList<>();
+    private ElectronicsRv category1Adapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        ExploreViewModel exploreViewModel = new ViewModelProvider(this).get(ExploreViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_explore, container, false);
 
-        RecyclerView category1Grid = root.findViewById(R.id.category1Grid);
-        category1Grid.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
-        category1List.add("");
-        category1List.add("");
-        category1List.add("");
-        Category1RvAdapter category1Adapter = new Category1RvAdapter(requireContext(), category1List);
-        category1Grid.setAdapter(category1Adapter);
+        //Electronics
+        RecyclerView electronicsRv = root.findViewById(R.id.electronicsRv);
+        electronicsRv.setLayoutManager(new LinearLayoutManager(requireContext(), RecyclerView.HORIZONTAL, false));
+        category1Adapter = new ElectronicsRv(requireContext(), category1List);
+        electronicsRv.setAdapter(category1Adapter);
+
+
+        populateShop();
 
         return root;
+    }
+
+    private void populateShop() {
+        ExploreViewModel exploreViewModel = new ViewModelProvider(this).get(ExploreViewModel.class);
+        exploreViewModel.getProductsData().observe(getViewLifecycleOwner(), products -> {
+            category1List.add(products);
+            category1Adapter.notifyDataSetChanged();
+        });
     }
 }

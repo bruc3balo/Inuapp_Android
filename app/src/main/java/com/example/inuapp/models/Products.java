@@ -2,18 +2,28 @@ package com.example.inuapp.models;
 
 public class Products {
     private String productId;
+    public static final String PRODUCT_ID = "productId";
     private String productCategory;
+    public static final String PRODUCT_CATEGORY = "productCategory";
     private String productName;
+    public static final String PRODUCT_NAME = "productName";
 
     private String productImageUrl;
+    public static final String PRODUCT_IMAGE_URL = "productImageUrl";
     private Double productMarketPricePerUnit;
+    public static final String PRODUCT_MP = "productMarketPricePerUnit";
     private String productDescription;
+    public static final String PRODUCT_DESCRIPTION = "productDescription";
 
     private String productUnit;
+    public static final String PRODUCT_UNIT = "productUnit";
     private Double productSellingPricePerUnit;
+    public static final String PRODUCT_SP = "productSellingPricePerUnit";
     private String postedAt;
+    public static final String POSTED_AT = "postedAt";
 
     private int productSellCount;
+    public static final String PRODUCT_SELL_COUNT = "productSellCount";
 
     public static final String ELECTRONICS = "Electronics";
     public static final String HOME = "Home";
@@ -30,6 +40,7 @@ public class Products {
 
     public static final String PRODUCT_SUR = "PD";
     public static final String NO_IMAGE = "https://techweez.com/wp-content/uploads/2017/07/NO-IMAGE.png";
+    public static final String PRODUCTS = "Products";
 
     public Products(String productId, String productCategory, String productName, String productImageUrl, Double productMarketPricePerUnit, String productDescription, String productUnit, Double productSellingPricePerUnit, String postedAt, int productSellCount) {
         this.productId = productId;
@@ -47,6 +58,9 @@ public class Products {
     public Products() {
     }
 
+    public Products(String productName) {
+        this.productName = productName;
+    }
 
     public String getProductId() {
         return productId;

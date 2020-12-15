@@ -4,27 +4,20 @@ import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.inuapp.R;
-import com.example.inuapp.admin.addNewProduct.AddNewProductActivity;
-import com.example.inuapp.admin.addNewProduct.adapter.NewProductRvAdapter;
 import com.example.inuapp.admin.addProducts.adapter.ProductPickRv;
 import com.example.inuapp.models.Products;
 import com.example.inuapp.ui.explore.ExploreViewModel;
-import com.example.inuapp.ui.explore.adapters.ElectronicsRv;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
@@ -113,7 +106,6 @@ public class AddToMarket extends AppCompatActivity {
             }
         });
 
-
         populateShop(productPickRv);
     }
 
@@ -132,7 +124,7 @@ public class AddToMarket extends AppCompatActivity {
             products.setProductCount(unitEdit.getText().toString());
             products.setProductSellingPricePerUnit(Double.parseDouble(priceEdit.getText().toString()));
             products.setProductDescription(description.getText().toString());
-            products.setPostedAt(truncate(Calendar.getInstance().getTime().toString(),10));
+            products.setPostedAt(truncate(Calendar.getInstance().getTime().toString(),16));
             valid = true;
         }
         return valid;
@@ -156,7 +148,7 @@ public class AddToMarket extends AppCompatActivity {
     private void addProductToShop (Button button, Products product) {
         button.setEnabled(false);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        db.collection(SHOP).document(product.getPostedAt()).collection(product.getProductCategory()).document(products.getProductName()).set(product).addOnCompleteListener(task -> {
+        db.collection(SHOP).document(product.getProductId()).set(product).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Toast.makeText(getApplicationContext(), "Added to market", Toast.LENGTH_SHORT).show();
                 System.out.println(product.getProductName() + " has been added to the market");

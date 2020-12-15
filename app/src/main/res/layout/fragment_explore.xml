@@ -22,17 +22,13 @@
            android:layout_height="wrap_content"
            android:orientation="vertical">
 
-           <Spinner
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center"
-               android:background="@color/semiBlack"/>
-
            <TextView
                android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_gravity="center"
                android:padding="5dp"
+               android:id="@+id/electronicsTv"
+               android:background="@android:color/darker_gray"
                android:textColor="@color/black"
                android:text="@string/electronics"
                android:textStyle="bold"/>
@@ -47,7 +43,61 @@
                android:id="@+id/electronicsRv"
                android:layout_width="match_parent"
                android:orientation="horizontal"
+               android:layout_height="460dp"
+               android:layout_gravity="center"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="5dp"
+               android:padding="5dp"/>
+
+           <TextView
+               android:layout_width="match_parent"
                android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:padding="5dp"
+               android:id="@+id/homeTv"
+               android:textColor="@color/black"
+               android:text="Home"
+               android:background="@android:color/darker_gray"
+               android:textStyle="bold"/>
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:layout_gravity="center"
+               android:background="@color/semiBlack"/>
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/homeRv"
+               android:layout_width="match_parent"
+               android:orientation="horizontal"
+               android:layout_height="460dp"
+               android:layout_gravity="center"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="5dp"
+               android:padding="5dp"/>
+
+           <TextView
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center"
+               android:padding="5dp"
+               android:background="@android:color/darker_gray"
+               android:id="@+id/gamingTv"
+               android:textColor="@color/black"
+               android:text="@string/gaming"
+               android:textStyle="bold"/>
+
+           <View
+               android:layout_width="match_parent"
+               android:layout_height="1dp"
+               android:layout_gravity="center"
+               android:background="@color/semiBlack"/>
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/gamingRv"
+               android:layout_width="match_parent"
+               android:orientation="horizontal"
+               android:layout_height="460dp"
                android:layout_gravity="center"
                android:layout_marginTop="5dp"
                android:layout_marginBottom="5dp"
@@ -59,49 +109,9 @@
                android:layout_gravity="center"
                android:padding="5dp"
                android:textColor="@color/black"
-               android:text="Home"
-               android:textStyle="bold"/>
-
-           <View
-               android:layout_width="match_parent"
-               android:layout_height="1dp"
-               android:layout_gravity="center"
-               android:background="@color/semiBlack"/>
-
-           <GridView
-               android:layout_width="match_parent"
-               android:layout_height="200dp"
-               android:layout_gravity="center"
-               android:padding="5dp"/>
-
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center"
-               android:padding="5dp"
-               android:textColor="@color/black"
-               android:text="@string/gaming"
-               android:textStyle="bold"/>
-
-           <View
-               android:layout_width="match_parent"
-               android:layout_height="1dp"
-               android:layout_gravity="center"
-               android:background="@color/semiBlack"/>
-
-           <GridView
-               android:layout_width="match_parent"
-               android:layout_height="200dp"
-               android:layout_gravity="center"
-               android:padding="5dp"/>
-
-           <TextView
-               android:layout_width="match_parent"
-               android:layout_height="wrap_content"
-               android:layout_gravity="center"
-               android:padding="5dp"
-               android:textColor="@color/black"
                android:text="@string/fashion"
+               android:id="@+id/fashionTv"
+               android:background="@android:color/darker_gray"
                android:textStyle="bold"/>
 
            <View
@@ -110,10 +120,14 @@
                android:layout_gravity="center"
                android:background="@color/semiBlack"/>
 
-           <GridView
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/fashionRv"
                android:layout_width="match_parent"
-               android:layout_height="200dp"
+               android:orientation="horizontal"
+               android:layout_height="460dp"
                android:layout_gravity="center"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="5dp"
                android:padding="5dp"/>
 
            <TextView
@@ -121,8 +135,10 @@
                android:layout_height="wrap_content"
                android:layout_gravity="center"
                android:padding="5dp"
+               android:id="@+id/computingTv"
                android:textColor="@color/black"
                android:text="@string/computing"
+               android:background="@android:color/darker_gray"
                android:textStyle="bold"/>
 
            <View
@@ -131,10 +147,14 @@
                android:layout_gravity="center"
                android:background="@color/semiBlack"/>
 
-           <GridView
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/computingRv"
                android:layout_width="match_parent"
-               android:layout_height="200dp"
+               android:orientation="horizontal"
+               android:layout_height="460dp"
                android:layout_gravity="center"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="5dp"
                android:padding="5dp"/>
 
            <TextView
@@ -142,6 +162,8 @@
                android:layout_height="wrap_content"
                android:layout_gravity="center"
                android:padding="5dp"
+               android:background="@android:color/darker_gray"
+               android:id="@+id/sportingTv"
                android:textColor="@color/black"
                android:text="@string/sporting"
                android:textStyle="bold"/>
@@ -152,10 +174,15 @@
                android:layout_gravity="center"
                android:background="@color/semiBlack"/>
 
-           <GridView
+
+           <androidx.recyclerview.widget.RecyclerView
+               android:id="@+id/sportingRv"
                android:layout_width="match_parent"
-               android:layout_height="200dp"
+               android:orientation="horizontal"
+               android:layout_height="460dp"
                android:layout_gravity="center"
+               android:layout_marginTop="5dp"
+               android:layout_marginBottom="5dp"
                android:padding="5dp"/>
 
        </LinearLayout>

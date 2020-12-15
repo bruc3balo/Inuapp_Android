@@ -27,7 +27,10 @@ import androidx.core.app.ActivityCompat;
 
 import com.example.inuapp.R;
 import com.example.inuapp.models.Products;
+import com.google.android.gms.tasks.Continuation;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -37,6 +40,7 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Objects;
 
 import static com.example.inuapp.models.Products.COMPUTING;
 import static com.example.inuapp.models.Products.COUNT;
@@ -239,7 +243,6 @@ public class AddNewProductActivity extends AppCompatActivity {
         }
     }
 
-
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void galleryPermission() {
         // checkSelfPermission(Manifest.permission_group.STORAGE);
@@ -267,7 +270,8 @@ public class AddNewProductActivity extends AppCompatActivity {
     @SuppressLint("StaticFieldLeak")
     public class UploadProduct extends AsyncTask<Products, Void, Void> {
 
-        public UploadProduct() {
+        public UploadProduct () {
+
         }
 
         @Override
@@ -285,22 +289,23 @@ public class AddNewProductActivity extends AppCompatActivity {
             StorageReference productBucket = FirebaseStorage.getInstance().getReference().child(PRODUCT_IMAGES).child(product.getProductId());
             //  Uri file = Uri.fromFile(new File(String.valueOf(files)));
             //Todo Fix images link
-            productBucket.putFile(files).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    if (taskSnapshot.getTask().isSuccessful()) {
-                        UploadTask.TaskSnapshot downloadUrl = taskSnapshot.getTask().getResult();
-                        Toast.makeText(AddNewProductActivity.this, "" + downloadUrl, Toast.LENGTH_SHORT).show();
-                        product.setProductImageUrl(downloadUrl.toString());
-                        System.out.println("Uploaded " + downloadUrl);
-
+            productBucket.putFile(files).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    Uri generatedFilePath = Objects.requireNonNull(task.getResult()).getUploadSessionUri();
+                    productBucket.getDownloadUrl().addOnSuccessListener(uri -> {
+                        String url = uri.toString();
+                        product.setProductImageUrl(url);
                         saveToDocs(product);
-                    }
+                        System.out.println("Stored link uri" + url);
+                    });
+                    System.out.println("Upload link uri" + Objects.requireNonNull(task.getResult()).getUploadSessionUri());
+                } else {
+                    System.out.println("Failed to upload " + files.toString());
+                    saveToDocs(product);
                 }
-            }).addOnFailureListener(exception -> {
-                System.out.println("Failed to upload " + files.toString());
-                saveToDocs(product);
+
             });
+
         }
 
         private void saveToDocs(Products product) {

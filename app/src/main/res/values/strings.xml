@@ -44,4 +44,6 @@
     <string name="computing">Computing</string>
     <string name="sporting">Sporting</string>
     <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="logout">Logout</string>
 </resources>

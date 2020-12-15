@@ -7,6 +7,7 @@
     android:layout_alignParentBottom="true"
     android:layout_gravity="center"
     android:gravity="center"
+    android:layout_margin="10dp"
     android:orientation="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -20,38 +21,49 @@
         android:layout_margin="1dp"
         android:padding="5dp" />
 
-    <TextView
-        android:id="@+id/productName"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
         android:layout_marginTop="5dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:background="@android:color/holo_red_light"
-        android:padding="4dp" />
+        android:layout_gravity="center"
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/productPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:background="@color/semiBlack"
-        android:padding="4dp" />
+        <TextView
+            android:id="@+id/productName"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical"
+            android:background="@android:color/holo_red_light"
+            android:padding="4dp" />
 
-    <TextView
-        android:id="@+id/productDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:background="@color/greenPrimary"
-        android:padding="4dp" />
+        <TextView
+            android:layout_weight="1"
+            android:id="@+id/productPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical"
+            android:background="@color/semiBlack"
+            android:padding="4dp" />
 
-    <TextView
-        android:id="@+id/postedAtTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:background="@color/semiWhite"
-        android:padding="4dp" />
+        <TextView
+            android:id="@+id/productDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/greenPrimary"
+            android:maxHeight="100dp" />
 
+        <TextView
+            android:id="@+id/postedAtTv"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@color/semiWhite"
+            android:padding="4dp" />
 
-</LinearLayout>
+    </LinearLayout>
+
+</LinearLayout >

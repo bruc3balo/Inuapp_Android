@@ -17,80 +17,82 @@
 
         <ImageView
             android:src="@mipmap/nfp_png"
-            android:id="@+id/commodityImage_admin"
+            android:id="@+id/commodityImage_admin_dialog"
             android:background="#00FFFFFF"
             android:scaleType="fitXY"
             android:layout_margin="1dp"
             android:layout_gravity="center"
             android:padding="4dp"
             android:layout_width="100dp"
-            android:layout_height="100dp" />
+            android:layout_height="match_parent" />
 
         <View
             android:layout_marginStart="10dp"
             android:background="@color/semiBlack"
             android:layout_width="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"/>
 
         <LinearLayout
-            android:layout_gravity="center_vertical"
-            android:gravity="center_vertical"
-            android:layout_marginBottom="2dp"
-            android:layout_marginTop="2dp"
-            android:layout_marginEnd="2dp"
-            android:padding="4dp"
-            android:layout_marginStart="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
 
-                <TextView
+            <LinearLayout
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginEnd="2dp"
+                android:layout_gravity="center"
+                android:padding="4dp"
+                android:layout_marginStart="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <EditText
                     android:layout_marginStart="5dp"
-                    android:id="@+id/commodityName_admin"
+                    android:id="@+id/commodityName_admin_dialog"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:text="Name"/>
+                    android:hint="Name"/>
 
-                <TextView
+                <EditText
                     android:layout_marginStart="5dp"
-                    android:id="@+id/commodityPrice_admin"
+                    android:id="@+id/commodityPrice_admin_dialog"
                     android:layout_gravity="center"
                     android:gravity="center_vertical"
                     android:layout_weight="1"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
-                    android:text="Price"/>
+                    android:hint="Price"/>
 
-            <TextView
-                android:id="@+id/commodityDescription_admin"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_gravity="center"
-                android:layout_marginStart="5dp"
-                android:layout_weight="1"
-                android:gravity="center_vertical"
-                android:singleLine="true"
-                android:text="Description" />
+                <EditText
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/commodityDescription_admin_dialog"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Description"/>
 
-            <!--<TextView
-                android:layout_marginStart="5dp"
-                android:id="@+id/commodityNumber_admin"
-                android:layout_gravity="center"
-                android:gravity="center_vertical"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:text="Number of items"/>-->
+                <EditText
+                    android:layout_marginStart="5dp"
+                    android:id="@+id/commodityNumber_admin_dialog"
+                    android:layout_gravity="center"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:hint="Number of items"/>
 
+            </LinearLayout>
 
         </LinearLayout>
-
     </LinearLayout>
 
     <LinearLayout
@@ -102,27 +104,17 @@
         android:orientation="horizontal">
 
         <ImageButton
-            android:id="@+id/edit_admin"
+            android:id="@+id/shop_edit_admin_save"
             android:layout_gravity="center"
             android:layout_margin="4dp"
-            android:padding="4dp"
+            android:padding="10dp"
             android:background="#ffffff"
-            android:src="@drawable/brush"
+            android:src="@drawable/ic_save_"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent" />
 
 
-        <ImageButton
-            android:id="@+id/delete_admin"
-            android:layout_margin="4dp"
-            android:background="#ffffff"
-            android:src="@android:drawable/ic_menu_delete"
-            android:tint="@android:color/holo_red_dark"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_height="match_parent" />
 
     </LinearLayout>
 

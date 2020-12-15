@@ -7,13 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.inuapp.R;
 import com.example.inuapp.admin.AdminActivity;
+import com.example.inuapp.admin.addNewProduct.adapter.NewProductRvAdapter;
 import com.example.inuapp.admin.addProducts.adapter.AddProductRvAdapter;
+import com.example.inuapp.models.Products;
+import com.example.inuapp.ui.explore.ExploreViewModel;
 import com.google.android.material.snackbar.Snackbar;
 import static com.example.inuapp.admin.AdminActivity.currentAdminPage;
 
@@ -24,7 +29,7 @@ import static com.example.inuapp.admin.AdminActivity.fab;
 
 public class AddProductsFragment extends Fragment {
 
-    private LinkedList<String> add_product_list = new LinkedList<>();
+    private LinkedList<Products> add_product_list = new LinkedList<>();
 
     public AddProductsFragment() {
         // Required empty public constructor
@@ -55,13 +60,21 @@ public class AddProductsFragment extends Fragment {
         RecyclerView recyclerView = v.findViewById(R.id.add_product_rv);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext(),RecyclerView.VERTICAL,false));
 
-        add_product_list.add("");
-        add_product_list.add("");
-        add_product_list.add("");
 
         AddProductRvAdapter addProductRvAdapter = new AddProductRvAdapter(requireContext(),add_product_list);
         recyclerView.setAdapter(addProductRvAdapter);
 
+        populateShop(addProductRvAdapter);
+
         return v;
+    }
+
+
+    private void populateShop(AddProductRvAdapter newProductFragment) {
+        ExploreViewModel exploreViewModel = new ViewModelProvider(this).get(ExploreViewModel.class);
+        exploreViewModel.getShopProductsList().observe(getViewLifecycleOwner(), products -> {
+            add_product_list.add(products);
+            newProductFragment.notifyDataSetChanged();
+        });
     }
 }

@@ -30,10 +30,12 @@
             android:layout_gravity="center"
             tools:listitem="@layout/cart_item"
             android:layout_weight="1"
+            android:id="@+id/cartRv"
             android:isScrollContainer="true"
             android:padding="10dp" />
 
         <Button
+            android:id="@+id/confirm_cart_b"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"

@@ -16,11 +16,12 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
+            android:background="@color/inua_logo_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:scaleType="fitCenter"
-            android:src="@drawable/ic_fresh_fruit"/>
+            android:src="@mipmap/inua_logo"/>
 
     </LinearLayout>
 

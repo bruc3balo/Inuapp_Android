@@ -26,6 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Date"
+                android:id="@+id/dateOrderTv"
                 android:textStyle="bold"
                 android:layout_gravity="center"
                 android:gravity="center"/>
@@ -37,7 +38,7 @@
                 android:background="@color/semiBlack"/>
 
 
-            <TextView
+           <!-- <TextView
                 android:text="Location"
                 android:gravity="center_vertical"
                 android:textStyle="bold"
@@ -47,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                app:drawableEndCompat="@drawable/location_pin" />
+                app:drawableEndCompat="@drawable/location_pin" />-->
 
             <LinearLayout
                 android:layout_margin="5dp"
@@ -68,6 +69,7 @@
 
                 <TextView
                     android:text="@string/to_be_filled"
+                    android:id="@+id/userNameTv"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/black"
@@ -78,6 +80,7 @@
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/orderProductsRv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
@@ -104,6 +107,7 @@
 
                 <TextView
                     android:text="@string/to_be_filled"
+                    android:id="@+id/totalProductsTv"
                     android:layout_weight="1"
                     android:gravity="center"
                     android:textColor="@color/black"

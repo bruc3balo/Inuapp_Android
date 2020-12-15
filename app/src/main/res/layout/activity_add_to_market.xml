@@ -7,10 +7,10 @@
     tools:context=".admin.addProducts.AddToMarket">
 
     <androidx.appcompat.widget.Toolbar
-        android:background="@color/greenPrimary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:background="@color/greenPrimary" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -34,70 +34,70 @@
 
             <RadioGroup
                 android:id="@+id/categoryGroup"
-                android:padding="5dp"
-                android:layout_gravity="center"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="5dp">
 
                 <RadioButton
                     android:id="@+id/electronicRadio"
-                    android:text="@string/electronics"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="@string/electronics" />
 
                 <RadioButton
                     android:id="@+id/homeRadio"
-                    android:text="@string/home"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="@string/home" />
 
                 <RadioButton
                     android:id="@+id/gamingRadio"
-                    android:text="@string/gaming"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="@string/gaming" />
 
                 <RadioButton
                     android:id="@+id/fashionRadio"
-                    android:text="@string/fashion"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="@string/fashion" />
 
 
                 <RadioButton
                     android:id="@+id/computingRadio"
-                    android:text="@string/computing"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="@string/computing" />
 
 
                 <RadioButton
                     android:id="@+id/sportingRadio"
-                    android:text="@string/sporting"
-                    android:layout_gravity="center_vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"/>
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:text="@string/sporting" />
 
             </RadioGroup>
 
             <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/productMarketRv"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/productMarketRv"
                 android:layout_gravity="center"
-                android:padding="15dp"
-                android:layout_margin="5dp"/>
+                android:layout_margin="5dp"
+                android:padding="15dp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -108,15 +108,53 @@
                 android:text="Units"
                 android:textColor="@color/black" />
 
-            <EditText
-                android:id="@+id/unitEdit"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_margin="5dp"
-                android:inputType="numberDecimal"
-                android:gravity="center_vertical"
-                android:hint="Units" />
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/unitEdit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:hint="Units"
+                    android:inputType="numberDecimal" />
+
+                <!-- TODO -->
+
+                <!--  <com.google.android.material.chip.ChipGroup
+                      android:layout_width="wrap_content"
+                      android:layout_height="match_parent"
+                      android:layout_gravity="center">
+
+                      <com.google.android.material.chip.Chip
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:gravity="center"/>
+
+                      <com.google.android.material.chip.Chip
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:gravity="center"/>
+
+                      <com.google.android.material.chip.Chip
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:gravity="center"/>
+
+                      <com.google.android.material.chip.Chip
+                          android:layout_width="wrap_content"
+                          android:layout_height="match_parent"
+                          android:gravity="center"/>
+
+                  </com.google.android.material.chip.ChipGroup>-->
+
+            </LinearLayout>
 
             <TextView
                 android:layout_width="match_parent"
@@ -160,10 +198,10 @@
 
     <Button
         android:id="@+id/addToMarketButton"
-        android:text="Post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:background="@color/greenPrimary"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="Post" />
 
 </LinearLayout>

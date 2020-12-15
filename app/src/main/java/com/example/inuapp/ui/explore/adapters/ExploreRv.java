@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 
+import com.bumptech.glide.Glide;
 import com.example.inuapp.R;
 import com.example.inuapp.models.Products;
 import com.example.inuapp.ui.cart.Cart;
@@ -22,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
 
-public class ElectronicsRv extends RecyclerView.Adapter<ElectronicsRv.ViewHolder> {
+public class ExploreRv extends RecyclerView.Adapter<ExploreRv.ViewHolder> {
 
 
     private LinkedList<Products> productsList;
@@ -31,7 +32,7 @@ public class ElectronicsRv extends RecyclerView.Adapter<ElectronicsRv.ViewHolder
     private final Context mContext;
 
 
-    public ElectronicsRv(Context context, LinkedList<Products> productsList) {
+    public ExploreRv(Context context, LinkedList<Products> productsList) {
         this.mInflater = LayoutInflater.from(context);
         this.productsList = productsList;
         this.mContext = context;
@@ -52,7 +53,7 @@ public class ElectronicsRv extends RecyclerView.Adapter<ElectronicsRv.ViewHolder
         holder.postedAtTv.setText(productsList.get(position).getPostedAt());
         holder.description.setText(productsList.get(position).getProductDescription());
         holder.price.setText(String.valueOf(productsList.get(position).getProductMarketPricePerUnit()));
-        //Glide.with(mContext).load(productsList.get(position).getProductImageUrl()).into(holder.preview);
+        Glide.with(mContext).load(productsList.get(position).getProductImageUrl()).into(holder.preview);
 
         holder.addToWishlistButton.setOnClickListener(v -> mContext.startActivity(new Intent(mContext, Wishlist.class)));
         holder.addToCartButton.setOnClickListener(v -> mContext.startActivity(new Intent(mContext, Cart.class)));

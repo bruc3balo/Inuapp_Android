@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="350dp" android:orientation="vertical"
+    android:layout_height="wrap_content" android:layout_gravity="center" android:padding="5dp" android:layout_margin="5dp">
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/black"/>
+
+        <TextView
+            android:id="@+id/totalCost"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Total"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="20sp"
+            android:textColor="@android:color/holo_red_dark"/>
+
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_margin="5dp"
+        android:id="@+id/orderB"
+        android:textStyle="bold"
+        android:textColor="@color/greenPrimary"
+        android:background="@android:color/black"
+        android:text="Order"/>
+
+</LinearLayout>

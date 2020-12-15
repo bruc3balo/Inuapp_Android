@@ -12,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.inuapp.R;
 import com.example.inuapp.models.Products;
 import com.example.inuapp.ui.cart.Cart;
@@ -51,7 +52,7 @@ public class ProductPickRv extends RecyclerView.Adapter<ProductPickRv.ViewHolder
         holder.postedAtTv.setText(productsList.get(position).getPostedAt());
         holder.description.setText(productsList.get(position).getProductDescription());
         holder.price.setText(String.valueOf(productsList.get(position).getProductMarketPricePerUnit()));
-        //Glide.with(mContext).load(productsList.get(position).getProductImageUrl()).into(holder.preview);
+        Glide.with(mContext).load(productsList.get(position).getProductImageUrl()).into(holder.preview);
     }
 
 

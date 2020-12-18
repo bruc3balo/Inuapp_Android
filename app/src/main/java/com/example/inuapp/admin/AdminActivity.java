@@ -3,8 +3,10 @@ package com.example.inuapp.admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -13,11 +15,14 @@ import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
+import com.example.inuapp.MainActivity;
 import com.example.inuapp.R;
 import com.example.inuapp.admin.addNewProduct.AddNewProductActivity;
 import com.example.inuapp.admin.addProducts.AddToMarket;
+import com.example.inuapp.login.LoginActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class AdminActivity extends AppCompatActivity {
 
@@ -64,8 +69,20 @@ public class AdminActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.logout, menu);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+
+        if (item.getItemId() == R.id.logout_admin) {
+            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(AdminActivity.this, LoginActivity.class));
+            finish();
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

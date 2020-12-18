@@ -4,32 +4,34 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-
+import com.bumptech.glide.Glide;
 import com.example.inuapp.R;
 import com.example.inuapp.models.Orders;
+import com.example.inuapp.models.Products;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
 
-public class OrdersRvAdapter extends RecyclerView.Adapter<OrdersRvAdapter.ViewHolder> {
+public class ProductListRvAdapter extends RecyclerView.Adapter<ProductListRvAdapter.ViewHolder> {
 
 
-    private LinkedList<Orders> ordersLinkedList;
+    private LinkedList<Products> productsLinkedList;
     private final LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private final Context mContext;
 
 
-    public OrdersRvAdapter(Context context, LinkedList<Orders> ordersLinkedList) {
+    public ProductListRvAdapter(Context context, LinkedList<Products> productsLinkedList) {
         this.mInflater = LayoutInflater.from(context);
-        this.ordersLinkedList = ordersLinkedList;
+        this.productsLinkedList = productsLinkedList;
         this.mContext = context;
     }
 
@@ -37,37 +39,37 @@ public class OrdersRvAdapter extends RecyclerView.Adapter<OrdersRvAdapter.ViewHo
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NotNull ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.order_item, parent, false);
+        View view = mInflater.inflate(R.layout.item_list, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.totalProductsTv.setText(ordersLinkedList.get(position).getOrderAmount());
-        holder.userNameTv.setText(ordersLinkedList.get(position).getUserId());
-        holder.dateOrderTv.setText(ordersLinkedList.get(position).getDeliveryDate());
-        holder.orderProductsRv.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.VERTICAL,false));
-        //ProductListRvAdapter productListRvAdapter = new ProductListRvAdapter(mContext,ordersLinkedList.get(position).getProductsOrdered());
-       // holder.orderProductsRv.setAdapter(productListRvAdapter);
+        holder.commodityDescription_order.setText(productsLinkedList.get(position).getProductDescription());
+        holder.commodityPrice_order.setText(String.valueOf(productsLinkedList.get(position).getProductSellingPricePerUnit()));
+        holder.commodityName_order.setText(productsLinkedList.get(position).getProductName());
+        Glide.with(mContext).load(productsLinkedList.get(position).getProductImageUrl()).into(holder.commodityImage_order);
     }
 
     // total number of rows
     @Override
     public int getItemCount() {
-        return ordersLinkedList.size();
+        return productsLinkedList.size();
     }
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView dateOrderTv, userNameTv, totalProductsTv;
-        RecyclerView orderProductsRv;
+        TextView commodityName_order, commodityPrice_order, commodityDescription_order;
+        ImageView commodityImage_order;
 
         ViewHolder(View itemView) {
             super(itemView);
-            dateOrderTv = itemView.findViewById(R.id.dateOrderTv);
-            userNameTv = itemView.findViewById(R.id.userNameTv);
-            totalProductsTv = itemView.findViewById(R.id.totalProductsTv);
-            orderProductsRv = itemView.findViewById(R.id.orderProductsRv);
+
+            commodityName_order = itemView.findViewById(R.id.commodityName_order);
+            commodityPrice_order = itemView.findViewById(R.id.commodityPrice_order);
+            commodityDescription_order = itemView.findViewById(R.id.commodityDescription_order);
+            commodityImage_order = itemView.findViewById(R.id.commodityImage_order);
+
             itemView.setOnClickListener(this);
         }
 

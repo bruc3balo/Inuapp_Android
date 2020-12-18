@@ -49,6 +49,14 @@ public class Products {
     public Products() {
     }
 
+    public Products(String productId, String productName, String productImageUrl, Double productSellingPricePerUnit, String productCount) {
+        this.productId = productId;
+        this.productName = productName;
+        this.productImageUrl = productImageUrl;
+        this.productSellingPricePerUnit = productSellingPricePerUnit;
+        this.productCount = productCount;
+    }
+
     public Products(String productName) {
         this.productName = productName;
     }

@@ -80,6 +80,7 @@
                 android:layout_height="0dp">
 
                 <ImageButton
+                    android:id="@+id/cartMinus"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_gravity="center"
@@ -89,15 +90,17 @@
                     tools:ignore="NestedWeights" />
 
                 <TextView
-                    android:layout_weight="1"
+                    android:id="@+id/numberCart"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:text="Number of items"
-                    android:gravity="center"
                     android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Number of items"
                     tools:ignore="NestedWeights" />
 
                 <ImageButton
+                    android:id="@+id/cartAdd"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:background="@android:color/transparent"

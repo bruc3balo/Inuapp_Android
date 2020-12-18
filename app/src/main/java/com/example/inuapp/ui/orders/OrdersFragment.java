@@ -22,13 +22,13 @@ import java.util.LinkedList;
 
 public class OrdersFragment extends Fragment {
 
-    private OrdersSlideshowViewModel ordersSlideshowViewModel;
+
     private final LinkedList<Orders> ordersList = new LinkedList<>();
     private OrdersRvAdapter ordersRvAdapter;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ordersSlideshowViewModel = new ViewModelProvider(this).get(OrdersSlideshowViewModel.class);
+
         View root = inflater.inflate(R.layout.fragment_my_orders, container, false);
 
         RecyclerView userNotificationRv = root.findViewById(R.id.ordersRv);
@@ -42,6 +42,7 @@ public class OrdersFragment extends Fragment {
     }
 
     private void getData() {
+        OrdersSlideshowViewModel ordersSlideshowViewModel = new ViewModelProvider(this).get(OrdersSlideshowViewModel.class);
         ordersSlideshowViewModel.getOrdersList().observe(getViewLifecycleOwner(), orders -> {
             ordersList.add(orders);
             Toast.makeText(requireContext(), orders.toString(), Toast.LENGTH_SHORT).show();

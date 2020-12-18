@@ -19,17 +19,21 @@ import com.example.inuapp.models.Products;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.LinkedList;
+import java.util.List;
+import java.util.Map;
+
+import static com.example.inuapp.models.Orders.PRODUCTS_ORDERED;
 
 public class ProductListRvAdapter extends RecyclerView.Adapter<ProductListRvAdapter.ViewHolder> {
 
 
-    private LinkedList<Products> productsLinkedList;
+    private List<Map<String, Products>> productsLinkedList;
     private final LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private final Context mContext;
 
 
-    public ProductListRvAdapter(Context context, LinkedList<Products> productsLinkedList) {
+    public ProductListRvAdapter(Context context, List<Map<String, Products>> productsLinkedList) {
         this.mInflater = LayoutInflater.from(context);
         this.productsLinkedList = productsLinkedList;
         this.mContext = context;
@@ -45,10 +49,10 @@ public class ProductListRvAdapter extends RecyclerView.Adapter<ProductListRvAdap
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.commodityDescription_order.setText(productsLinkedList.get(position).getProductDescription());
-        holder.commodityPrice_order.setText(String.valueOf(productsLinkedList.get(position).getProductSellingPricePerUnit()));
-        holder.commodityName_order.setText(productsLinkedList.get(position).getProductName());
-        Glide.with(mContext).load(productsLinkedList.get(position).getProductImageUrl()).into(holder.commodityImage_order);
+        holder.commodityDescription_order.setText(productsLinkedList.get(position).get(PRODUCTS_ORDERED).getProductDescription());
+        holder.commodityPrice_order.setText(String.valueOf(productsLinkedList.get(position).get(PRODUCTS_ORDERED).getProductSellingPricePerUnit()));
+        holder.commodityName_order.setText(productsLinkedList.get(position).get(PRODUCTS_ORDERED).getProductName());
+        Glide.with(mContext).load(productsLinkedList.get(position).get(PRODUCTS_ORDERED).getProductImageUrl()).into(holder.commodityImage_order);
     }
 
     // total number of rows

@@ -50,7 +50,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     private final LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private final Context mContext;
-    private final int[] items = new int[]{};
+  //  private final int[] items = new int[]{};
 
 
     public CartAdapter(Context context, LinkedList<Cart> cartLinkedList) {
@@ -74,7 +74,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         holder.commodityPrice_wish_cart.setText(String.valueOf(cartLinkedList.get(position).getProductPrice()));
         Glide.with(mContext).load(cartLinkedList.get(position).getProductImageUrl()).into(holder.productImage);
 
-        items[position] = cartLinkedList.get(position).getNumberOfItems();
+        //items[position] = cartLinkedList.get(position).getNumberOfItems();
 
         holder.numberCart.setText(String.valueOf(cartLinkedList.get(position).getNumberOfItems()));
         holder.minus.setOnClickListener(v -> {
@@ -85,7 +85,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             if (current < 0) {
                 current = 0;
             }
-            /*DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+
+            holder.numberCart.setText(String.valueOf(current));
+            DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+            int finalCurrent = current;
             db.child(CART).child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child(cartLinkedList.get(position).getProductId()).child(NO_OF_ITEMS).setValue(current).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -96,8 +99,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                         Toast.makeText(mContext, "Failed to minus", Toast.LENGTH_SHORT).show();
                     }
                 }
-            });*/
-            items[position] = current;
+            });
+            //items[position] = current;
             holder.numberCart.setText(current);
             new Handler().postDelayed(() -> holder.minus.setImageTintList(ColorStateList.valueOf(Color.BLACK)), 300);
             notifyDataSetChanged();
@@ -106,20 +109,21 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             holder.add.setImageTintList(ColorStateList.valueOf(Color.GREEN));
             int current = cartLinkedList.get(position).getNumberOfItems();
             current++;
-            holder.numberCart.setText(current);
-            items[position] = current;
-            /*DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+            holder.numberCart.setText(String.valueOf(current));
+          //  items[position] = current;
+            DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+            int finalCurrent = current;
             db.child(CART).child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid()).child(cartLinkedList.get(position).getProductId()).child(NO_OF_ITEMS).setValue(current + 1).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
                         notifyDataSetChanged();
-                        Toast.makeText(mContext, ""+ current, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mContext, ""+ finalCurrent, Toast.LENGTH_SHORT).show();
                     } else {
                         Toast.makeText(mContext, "Failed to add", Toast.LENGTH_SHORT).show();
                     }
                 }
-            });*/
+            });
             new Handler().postDelayed(() -> holder.add.setImageTintList(ColorStateList.valueOf(Color.BLACK)), 300);
             notifyDataSetChanged();
         });
@@ -154,7 +158,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView commodityName_wish_cart, commodityPrice_wish_cart;
-        EditText numberCart;
+        TextView numberCart;
         ImageView productImage;
         ImageButton minus, add, delete;
 
@@ -181,9 +185,6 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         this.mClickListener = itemClickListener;
     }
 
-    public int[] getItems(){
-        return items;
-    }
 
     public interface ItemClickListener {
         void onItemClick(View view, int position);

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 
 import com.example.inuapp.R;
+import com.example.inuapp.models.Orders;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -18,14 +19,14 @@ import java.util.LinkedList;
 public class AdminOrdersRvAdapter extends RecyclerView.Adapter<AdminOrdersRvAdapter.ViewHolder> {
 
 
-    private LinkedList<String> notificationList;
+    private LinkedList<Orders> notificationList;
     private final LayoutInflater mInflater;
     private ItemClickListener mClickListener;
     private final Context mContext;
 
 
 
-    public AdminOrdersRvAdapter(Context context, LinkedList<String> notificationList) {
+    public AdminOrdersRvAdapter(Context context, LinkedList<Orders> notificationList) {
         this.mInflater = LayoutInflater.from(context);
         this.notificationList = notificationList;
         this.mContext = context;

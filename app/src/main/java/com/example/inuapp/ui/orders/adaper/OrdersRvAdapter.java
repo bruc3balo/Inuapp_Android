@@ -47,8 +47,8 @@ public class OrdersRvAdapter extends RecyclerView.Adapter<OrdersRvAdapter.ViewHo
         holder.userNameTv.setText(ordersLinkedList.get(position).getUserId());
         holder.dateOrderTv.setText(ordersLinkedList.get(position).getDeliveryDate());
         holder.orderProductsRv.setLayoutManager(new LinearLayoutManager(mContext,RecyclerView.VERTICAL,false));
-        //ProductListRvAdapter productListRvAdapter = new ProductListRvAdapter(mContext,ordersLinkedList.get(position).getProductsOrdered());
-       // holder.orderProductsRv.setAdapter(productListRvAdapter);
+        ProductListRvAdapter productListRvAdapter = new ProductListRvAdapter(mContext,ordersLinkedList.get(position).getProductsOrdered());
+        holder.orderProductsRv.setAdapter(productListRvAdapter);
     }
 
     // total number of rows

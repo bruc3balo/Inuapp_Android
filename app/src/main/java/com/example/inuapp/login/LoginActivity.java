@@ -43,7 +43,7 @@ public class LoginActivity extends AppCompatActivity {
 
         viewPager = findViewById(R.id.loginViewpager);
         tabLayout = findViewById(R.id.tabs);
-        loginPb = findViewById(R.id.loginPb);
+//        loginPb = findViewById(R.id.loginPb);
 
         PageAdapter pageAdapter = new PageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(pageAdapter);
@@ -100,12 +100,13 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
-        loginPb.setVisibility(View.VISIBLE);
+        Toast.makeText(this, "Checking user", Toast.LENGTH_SHORT).show();
+//        loginPb.setVisibility(View.VISIBLE);
         FirebaseAuth.getInstance().addAuthStateListener(firebaseAuth -> {
             if (firebaseAuth.getCurrentUser() != null) {
                 logInUser(firebaseAuth.getCurrentUser());
             } else {
-                loginPb.setVisibility(View.GONE);
+              //  loginPb.setVisibility(View.GONE);
                 Toast.makeText(LoginActivity.this, "Sign in to continue", Toast.LENGTH_SHORT).show();
             }
         });
@@ -135,12 +136,12 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        loginPb.setVisibility(View.VISIBLE);
+        Toast.makeText(this, "Checking user", Toast.LENGTH_SHORT).show();
         FirebaseAuth.getInstance().addAuthStateListener(firebaseAuth -> {
             if (firebaseAuth.getCurrentUser() != null) {
                 logInUser(firebaseAuth.getCurrentUser());
             } else {
-                loginPb.setVisibility(View.GONE);
+              //  loginPb.setVisibility(View.GONE);
                 Toast.makeText(LoginActivity.this, "Sign in to continue", Toast.LENGTH_SHORT).show();
             }
         });

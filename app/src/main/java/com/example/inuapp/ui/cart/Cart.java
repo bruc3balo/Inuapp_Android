@@ -108,7 +108,7 @@ public class Cart extends AppCompatActivity {
         double total = 0;
         for (int i = 0; i <= cartLinkedList.size() - 1; i++) {
             Double price = cartLinkedList.get(i).getProductPrice();
-            int number = cartAdapter.getItems()[i];
+            int number = cartLinkedList.get(i).getNumberOfItems();
             double amount = number * price;
             System.out.println("Am"+amount);
             total = total + amount;

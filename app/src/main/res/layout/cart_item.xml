@@ -15,7 +15,7 @@
         android:padding="2dp"
         android:layout_gravity="top"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="140dp"
         android:orientation="horizontal">
 
         <ImageView
@@ -44,7 +44,7 @@
             android:padding="4dp"
             android:layout_marginStart="10dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:orientation="vertical">
 
             <TextView
@@ -53,8 +53,8 @@
                 android:gravity="center"
                 android:layout_width="match_parent"
                 android:padding="4dp"
-                android:layout_margin="5dp"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
                 android:text="comodity Name"
                 android:textAllCaps="true"
                 android:textSize="17sp"
@@ -63,26 +63,23 @@
                 android:id="@+id/commodityPrice_wish_cart"
                 android:layout_gravity="center"
                 android:gravity="center"
-                android:padding="5dp"
-                android:layout_margin="5dp"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:text="Price"/>
 
 
 
             <LinearLayout
-                android:layout_margin="5dp"
                 android:id="@+id/commodityNumber_wish_cart"
                 android:layout_gravity="center"
-                android:padding="5dp"
                 android:gravity="center_vertical"
+                android:layout_weight="1"
                 android:layout_width="match_parent"
                 android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:layout_height="0dp">
 
                 <ImageButton
-                    android:id="@+id/cartMinus"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:layout_gravity="center"
@@ -91,11 +88,9 @@
                     android:layout_height="match_parent"
                     tools:ignore="NestedWeights" />
 
-                <EditText
-                    android:id="@+id/numberCart"
+                <TextView
                     android:layout_weight="1"
                     android:layout_width="0dp"
-                    android:inputType="numberDecimal"
                     android:layout_height="match_parent"
                     android:text="Number of items"
                     android:gravity="center"
@@ -103,7 +98,6 @@
                     tools:ignore="NestedWeights" />
 
                 <ImageButton
-                    android:id="@+id/cartAdd"
                     android:layout_weight="1"
                     android:layout_width="0dp"
                     android:background="@android:color/transparent"
